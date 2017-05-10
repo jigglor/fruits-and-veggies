@@ -1,28 +1,43 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Fruit and Veggies</title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css">
+<html ng-app="MyApp" ng-controller="main">
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
-        <script src="js/fruits_and_veggies_test.js"></script>
-        <script src="js/app.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Fruit and Veggies</h1>
-            <div class="row">
-                <div class="col-sm-4">
-                    col 1
+<head>
+    <title>Fruit and Veggies</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+    <script src="js/fruits_and_veggies_test.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Fruit and Veggies</h1>
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>Fruits</h3>
+                <div ng-repeat="fruit in userFruits" ng-class="{'wrong':!checkLists(fruit, fruits)}" class="well text-center">
+                    <span>{{ fruit }}</span>
+                    <button ng-click="fruitBack(fruit)" class="btn btn-primary pull-right">&#8594;</button>
                 </div>
-                <div class="col-sm-4">
-                    col 2
+            </div>
+            <div class="col-sm-4">
+                <h3>Produce List</h3>
+                <div ng-repeat="item in list track by $index" class="well text-center">
+                    <button ng-click="addFruit(item)" class="btn btn-primary pull-left">&#8592;</button>
+                    <span>{{ item }}</span>
+                    <button ng-click="addVege(item)" class="btn btn-primary pull-right">&#8594;</button>
                 </div>
-                <div class="col-sm-4">
-                    col 3
+            </div>
+            <div class="col-sm-4">
+                <h3>Vegetables</h3>
+                <div ng-repeat="veg in userVeggies" ng-class="{'wrong':!checkLists(veggies, veggies)}" class="well text-center">
+                    <button ng-click="vegeBack(veg)" class="btn btn-primary pull-left">&#8592;</button>
+                    <span>{{ veg }}</span>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
